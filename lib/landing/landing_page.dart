@@ -50,14 +50,17 @@ class LandingPage extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              CustomButtonWidget(
-                text: "Agree and Continue",
-                onTap: () {
-                  AutoRouter.of(context).push(
-                    const LogInRoute(),
-                  );
-                },
-                backgroundColor: AppConstant.secondaryColor,
+              SizedBox(
+                width: 230.w,
+                child: CustomButtonWidget(
+                  text: "Agree and Continue",
+                  onTap: () {
+                    AutoRouter.of(context).push(
+                      const LogInRoute(),
+                    );
+                  },
+                  backgroundColor: AppConstant.secondaryColor,
+                ),
               ),
               SizedBox(
                 height: 40.h,

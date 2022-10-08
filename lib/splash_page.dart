@@ -13,7 +13,7 @@ class SplashPage extends HookConsumerWidget {
     useEffect(
       () {
         Future.delayed(
-          const Duration(seconds: 2),
+          const Duration(seconds: 3),
           () {
             AutoRouter.of(context).pushAndPopUntil(
               const LandingRoute(),
