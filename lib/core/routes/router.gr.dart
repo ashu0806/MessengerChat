@@ -25,21 +25,29 @@ class AppRouter extends _i4.RootStackRouter {
   @override
   final Map<String, _i4.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i4.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     LandingRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i4.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.LandingPage(),
+        transitionsBuilder: _i4.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     LogInRoute.name: (routeData) {
-      return _i4.MaterialPageX<dynamic>(
+      return _i4.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i3.LogInPage(),
+        transitionsBuilder: _i4.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
   };

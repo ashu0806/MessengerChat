@@ -18,7 +18,7 @@ class CustomButtonWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: 45.h,
-        width: 200.w,
+        width: double.infinity,
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: backgroundColor,
@@ -29,7 +29,7 @@ class CustomButtonWidget extends StatelessWidget {
         child: Text(
           text,
           style: Theme.of(context).textTheme.headline4!.copyWith(
-                fontSize: 16.sp,
+                fontSize: 18.sp,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
