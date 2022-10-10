@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:messenger_chat/auth/presentation/login_page.dart';
+import 'package:messenger_chat/auth/presentation/otp_page.dart';
 import 'package:messenger_chat/landing/landing_page.dart';
 import 'package:messenger_chat/splash_page.dart';
+import 'package:messenger_chat/userInfo/user_info_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -16,6 +18,14 @@ import 'package:messenger_chat/splash_page.dart';
     ),
     CustomRoute(
       page: LogInPage,
+      transitionsBuilder: TransitionsBuilders.zoomIn,
+    ),
+    CustomRoute(
+      page: OtpPage,
+      transitionsBuilder: TransitionsBuilders.zoomIn,
+    ),
+    CustomRoute(
+      page: UserInfoPage,
       transitionsBuilder: TransitionsBuilders.zoomIn,
     ),
   ],

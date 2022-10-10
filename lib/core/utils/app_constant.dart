@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
 
 mixin AppConstant {
@@ -27,7 +30,7 @@ mixin AppConstant {
             child: Row(
               children: [
                 Lottie.asset(
-                  'assets/logInPageImages/loading.json',
+                  'assets/loading.json',
                   fit: BoxFit.contain,
                 ),
                 Expanded(
@@ -63,9 +66,29 @@ mixin AppConstant {
       ),
       backgroundColor: color,
       duration: const Duration(
-        seconds: 1,
+        seconds: 2,
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  static Future<File?> pickImageFromGallery(BuildContext context) async {
+    File? image;
+
+    try {
+      final pickedImage = await ImagePicker().pickImage(
+        source: ImageSource.gallery,
+      );
+      if (pickedImage != null) {
+        image = File(pickedImage.path);
+      }
+    } catch (e) {
+      AppConstant.showSnackbar(
+        context,
+        e.toString(),
+        Colors.black,
+      );
+    }
+    return image;
   }
 }
