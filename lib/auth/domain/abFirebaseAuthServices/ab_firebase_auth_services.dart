@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 abstract class AbFirebaseAuthServices {
-  // Future<Either<AuthFailure, Unit>> signInWithPhone(
-  //   BuildContext context,
-  //   String phoneNumber,
-  // );
   void signInWithPhone(
     BuildContext context,
     String phoneNumber,
@@ -15,4 +13,18 @@ abstract class AbFirebaseAuthServices {
     String verificationCode,
     String userEnteredOtp,
   );
+
+  void saveUserData(
+    BuildContext context,
+    String name,
+    File? profilePic,
+    ProviderRef ref,
+  );
+
+  Future<bool> getSignedInUser();
 }
+
+// Future<Either<AuthFailure, Unit>> signInWithPhone(
+  //   BuildContext context,
+  //   String phoneNumber,
+  // );

@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:messenger_chat/auth/presentation/login_page.dart';
 import 'package:messenger_chat/auth/presentation/otp_page.dart';
+import 'package:messenger_chat/home/presentation/home_page.dart';
 import 'package:messenger_chat/landing/landing_page.dart';
 import 'package:messenger_chat/splash_page.dart';
-import 'package:messenger_chat/userInfo/user_info_page.dart';
+import 'package:messenger_chat/auth/presentation/user_info_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -26,6 +27,10 @@ import 'package:messenger_chat/userInfo/user_info_page.dart';
     ),
     CustomRoute(
       page: UserInfoPage,
+      transitionsBuilder: TransitionsBuilders.zoomIn,
+    ),
+    CustomRoute(
+      page: HomePage,
       transitionsBuilder: TransitionsBuilders.zoomIn,
     ),
   ],

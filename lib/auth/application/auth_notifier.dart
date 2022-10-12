@@ -1,10 +1,17 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:messenger_chat/auth/infra/firebase_auth_services.dart';
 
 class AuthNotifier {
   final FirebaseAuthServices services;
+  final ProviderRef ref;
 
-  AuthNotifier(this.services);
+  AuthNotifier(
+    this.services,
+    this.ref,
+  );
 
   void signIn(
     BuildContext context,
@@ -25,6 +32,19 @@ class AuthNotifier {
       context,
       verificationCode,
       userEnteredOtp,
+    );
+  }
+
+  void sendDataToFirebase(
+    BuildContext context,
+    String name,
+    File? profilePic,
+  ) {
+    services.saveUserData(
+      context,
+      name,
+      profilePic,
+      ref,
     );
   }
 }
