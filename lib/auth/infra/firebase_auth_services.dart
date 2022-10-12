@@ -1,11 +1,16 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:messenger_chat/auth/domain/abFirebaseAuthServices/ab_firebase_auth_services.dart';
+import 'package:messenger_chat/auth/domain/userModel/user_model.dart';
 import 'package:messenger_chat/core/routes/router.gr.dart';
+import 'package:messenger_chat/core/shared/providers.dart';
 import 'package:messenger_chat/core/utils/app_constant.dart';
 
 class FirebaseAuthServices extends AbFirebaseAuthServices {
@@ -86,6 +91,63 @@ class FirebaseAuthServices extends AbFirebaseAuthServices {
       );
     }
   }
+
+  @override
+  void saveUserData(
+    BuildContext context,
+    String name,
+    File? profilePic,
+    ProviderRef ref,
+  ) async {
+    try {
+      String uId = auth.currentUser!.uid;
+      String photoUrl =
+          'https://tse4.mm.bing.net/th?id=OIP.DxdqBFLVLPcWsjkds8636QHaHf&pid=Api&P=0';
+
+      if (profilePic != null) {
+        photoUrl =
+            await ref.read(commonFirebaseStorageProvider).storeFileToFirebase(
+                  'profilePic/$uId',
+                  profilePic,
+                );
+
+        var user = UserModel(
+          name: name,
+          uId: uId,
+          profilePic: photoUrl,
+          isOnline: true,
+          phoneNumber: auth.currentUser!.phoneNumber.toString(),
+          groupIds: [],
+        );
+
+        await firebaseFirestore.collection('users').doc(uId).set(
+              user.toMap(),
+            );
+        AppConstant.showLoader(
+          context,
+          "Saving User Data",
+        );
+        Future.delayed(
+          const Duration(seconds: 2),
+          () {
+            AutoRouter.of(context).pushAndPopUntil(
+              const HomeRoute(),
+              predicate: (route) => false,
+            );
+          },
+        );
+      }
+    } catch (e) {
+      AppConstant.showSnackbar(
+        context,
+        e.toString(),
+        Colors.black,
+      );
+    }
+  }
+
+  @override
+  Future<bool> getSignedInUser() async => auth.currentUser?.uid != null;
 }
 
 

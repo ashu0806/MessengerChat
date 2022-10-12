@@ -16,6 +16,7 @@ mixin AppConstant {
   static showLoader(context, String message, {Color? color}) {
     return showDialog(
       context: context,
+      
       builder: (context) {
         return Center(
           child: Container(
