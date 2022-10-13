@@ -26,7 +26,7 @@ class _LogInPageState extends ConsumerState<LogInPage> {
           );
       AppConstant.showLoader(
         context,
-        "Loading",
+        "Sending Otp...",
       );
     } else {
       AppConstant.showSnackbar(

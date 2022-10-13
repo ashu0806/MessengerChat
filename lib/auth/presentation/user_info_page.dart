@@ -34,7 +34,7 @@ class _UserInfoPageState extends ConsumerState<UserInfoPage> {
     if (name.isNotEmpty) {
       AppConstant.showLoader(
         context,
-        "Loading",
+        "Saving User Data",
       );
       ref.read(authNotifierProvider).sendDataToFirebase(
             context,

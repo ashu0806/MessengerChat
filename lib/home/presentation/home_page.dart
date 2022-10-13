@@ -1,8 +1,11 @@
 import 'dart:io';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:messenger_chat/core/routes/router.gr.dart';
 import 'package:messenger_chat/core/utils/app_constant.dart';
+import 'package:messenger_chat/home/widgets/contact_list_widget.dart';
 
 class HomePage extends StatefulHookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -117,9 +120,7 @@ class _HomePageState extends ConsumerState<HomePage>
             body: TabBarView(
               controller: tabBarController,
               children: const [
-                Center(
-                  child: Text('Chats'),
-                ),
+                ContactListWidget(),
                 Center(
                   child: Text('Status'),
                 ),
@@ -131,8 +132,10 @@ class _HomePageState extends ConsumerState<HomePage>
             floatingActionButton: FloatingActionButton(
               onPressed: () async {
                 if (tabBarController.index == 0) {
-                  // Navigator.pushNamed(context, SelectContactsScreen.routeName);
-                } else {
+                  AutoRouter.of(context).push(
+                    const SelectContactRoute(),
+                  );
+                } else {  
                   File? pickedImage =
                       await AppConstant.pickImageFromGallery(context);
                   if (pickedImage != null) {

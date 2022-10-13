@@ -11,24 +11,26 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i7;
-import 'package:flutter/material.dart' as _i8;
+import 'package:auto_route/auto_route.dart' as _i9;
+import 'package:flutter/material.dart' as _i10;
 
 import '../../auth/presentation/login_page.dart' as _i3;
 import '../../auth/presentation/otp_page.dart' as _i4;
 import '../../auth/presentation/user_info_page.dart' as _i5;
+import '../../getContacts/presentation/select_contact_page.dart' as _i8;
+import '../../home/presentation/chat_page.dart' as _i7;
 import '../../home/presentation/home_page.dart' as _i6;
 import '../../landing/landing_page.dart' as _i2;
 import '../../splash_page.dart' as _i1;
 
-class AppRouter extends _i7.RootStackRouter {
-  AppRouter([_i8.GlobalKey<_i8.NavigatorState>? navigatorKey])
+class AppRouter extends _i9.RootStackRouter {
+  AppRouter([_i10.GlobalKey<_i10.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i7.PageFactory> pagesMap = {
+  final Map<String, _i9.PageFactory> pagesMap = {
     SplashRoute.name: (routeData) {
-      return _i7.CustomPage<dynamic>(
+      return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashPage(),
         opaque: true,
@@ -36,50 +38,67 @@ class AppRouter extends _i7.RootStackRouter {
       );
     },
     LandingRoute.name: (routeData) {
-      return _i7.CustomPage<dynamic>(
+      return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.LandingPage(),
-        transitionsBuilder: _i7.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.zoomIn,
         opaque: true,
         barrierDismissible: false,
       );
     },
     LogInRoute.name: (routeData) {
-      return _i7.CustomPage<dynamic>(
+      return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i3.LogInPage(),
-        transitionsBuilder: _i7.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.zoomIn,
         opaque: true,
         barrierDismissible: false,
       );
     },
     OtpRoute.name: (routeData) {
       final args = routeData.argsAs<OtpRouteArgs>();
-      return _i7.CustomPage<dynamic>(
+      return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: _i4.OtpPage(
           key: args.key,
           verificationCode: args.verificationCode,
         ),
-        transitionsBuilder: _i7.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.zoomIn,
         opaque: true,
         barrierDismissible: false,
       );
     },
     UserInfoRoute.name: (routeData) {
-      return _i7.CustomPage<dynamic>(
+      return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i5.UserInfoPage(),
-        transitionsBuilder: _i7.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.zoomIn,
         opaque: true,
         barrierDismissible: false,
       );
     },
     HomeRoute.name: (routeData) {
-      return _i7.CustomPage<dynamic>(
+      return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i6.HomePage(),
-        transitionsBuilder: _i7.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.slideLeft,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    ChatRoute.name: (routeData) {
+      return _i9.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i7.ChatPage(),
+        transitionsBuilder: _i9.TransitionsBuilders.slideRightWithFade,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
+    SelectContactRoute.name: (routeData) {
+      return _i9.CustomPage<dynamic>(
+        routeData: routeData,
+        child: const _i8.SelectContactPage(),
         opaque: true,
         barrierDismissible: false,
       );
@@ -87,37 +106,45 @@ class AppRouter extends _i7.RootStackRouter {
   };
 
   @override
-  List<_i7.RouteConfig> get routes => [
-        _i7.RouteConfig(
+  List<_i9.RouteConfig> get routes => [
+        _i9.RouteConfig(
           SplashRoute.name,
           path: '/',
         ),
-        _i7.RouteConfig(
+        _i9.RouteConfig(
           LandingRoute.name,
           path: '/landing-page',
         ),
-        _i7.RouteConfig(
+        _i9.RouteConfig(
           LogInRoute.name,
           path: '/log-in-page',
         ),
-        _i7.RouteConfig(
+        _i9.RouteConfig(
           OtpRoute.name,
           path: '/otp-page',
         ),
-        _i7.RouteConfig(
+        _i9.RouteConfig(
           UserInfoRoute.name,
           path: '/user-info-page',
         ),
-        _i7.RouteConfig(
+        _i9.RouteConfig(
           HomeRoute.name,
           path: '/home-page',
+        ),
+        _i9.RouteConfig(
+          ChatRoute.name,
+          path: '/chat-page',
+        ),
+        _i9.RouteConfig(
+          SelectContactRoute.name,
+          path: '/select-contact-page',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashPage]
-class SplashRoute extends _i7.PageRouteInfo<void> {
+class SplashRoute extends _i9.PageRouteInfo<void> {
   const SplashRoute()
       : super(
           SplashRoute.name,
@@ -129,7 +156,7 @@ class SplashRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LandingPage]
-class LandingRoute extends _i7.PageRouteInfo<void> {
+class LandingRoute extends _i9.PageRouteInfo<void> {
   const LandingRoute()
       : super(
           LandingRoute.name,
@@ -141,7 +168,7 @@ class LandingRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.LogInPage]
-class LogInRoute extends _i7.PageRouteInfo<void> {
+class LogInRoute extends _i9.PageRouteInfo<void> {
   const LogInRoute()
       : super(
           LogInRoute.name,
@@ -153,9 +180,9 @@ class LogInRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.OtpPage]
-class OtpRoute extends _i7.PageRouteInfo<OtpRouteArgs> {
+class OtpRoute extends _i9.PageRouteInfo<OtpRouteArgs> {
   OtpRoute({
-    _i8.Key? key,
+    _i10.Key? key,
     required String verificationCode,
   }) : super(
           OtpRoute.name,
@@ -175,7 +202,7 @@ class OtpRouteArgs {
     required this.verificationCode,
   });
 
-  final _i8.Key? key;
+  final _i10.Key? key;
 
   final String verificationCode;
 
@@ -187,7 +214,7 @@ class OtpRouteArgs {
 
 /// generated route for
 /// [_i5.UserInfoPage]
-class UserInfoRoute extends _i7.PageRouteInfo<void> {
+class UserInfoRoute extends _i9.PageRouteInfo<void> {
   const UserInfoRoute()
       : super(
           UserInfoRoute.name,
@@ -199,7 +226,7 @@ class UserInfoRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.HomePage]
-class HomeRoute extends _i7.PageRouteInfo<void> {
+class HomeRoute extends _i9.PageRouteInfo<void> {
   const HomeRoute()
       : super(
           HomeRoute.name,
@@ -207,4 +234,28 @@ class HomeRoute extends _i7.PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [_i7.ChatPage]
+class ChatRoute extends _i9.PageRouteInfo<void> {
+  const ChatRoute()
+      : super(
+          ChatRoute.name,
+          path: '/chat-page',
+        );
+
+  static const String name = 'ChatRoute';
+}
+
+/// generated route for
+/// [_i8.SelectContactPage]
+class SelectContactRoute extends _i9.PageRouteInfo<void> {
+  const SelectContactRoute()
+      : super(
+          SelectContactRoute.name,
+          path: '/select-contact-page',
+        );
+
+  static const String name = 'SelectContactRoute';
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class Error extends StatelessWidget {
-  const Error({
+class ErrorShowWidget extends StatelessWidget {
+  const ErrorShowWidget({
     super.key,
     required this.errorMsg,
   });
