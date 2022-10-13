@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:messenger_chat/auth/presentation/login_page.dart';
 import 'package:messenger_chat/auth/presentation/otp_page.dart';
+import 'package:messenger_chat/getContacts/presentation/select_contact_page.dart';
+import 'package:messenger_chat/home/presentation/chat_page.dart';
 import 'package:messenger_chat/home/presentation/home_page.dart';
 import 'package:messenger_chat/landing/landing_page.dart';
 import 'package:messenger_chat/splash_page.dart';
@@ -31,7 +33,14 @@ import 'package:messenger_chat/auth/presentation/user_info_page.dart';
     ),
     CustomRoute(
       page: HomePage,
-      transitionsBuilder: TransitionsBuilders.zoomIn,
+      transitionsBuilder: TransitionsBuilders.slideLeft,
+    ),
+    CustomRoute(
+      page: ChatPage,
+      transitionsBuilder: TransitionsBuilders.slideRightWithFade,
+    ),
+    CustomRoute(
+      page: SelectContactPage,
     ),
   ],
 )

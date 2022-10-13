@@ -70,7 +70,7 @@ class FirebaseAuthServices extends AbFirebaseAuthServices {
       auth.signInWithCredential(credential);
       AppConstant.showLoader(
         context,
-        "User Created Successfully",
+        "Log in successfully...",
       );
       Future.delayed(
         const Duration(
@@ -117,16 +117,12 @@ class FirebaseAuthServices extends AbFirebaseAuthServices {
           profilePic: photoUrl,
           isOnline: true,
           phoneNumber: auth.currentUser!.phoneNumber.toString(),
-          groupIds: [],
+          // groupIds: [],
         );
 
         await firebaseFirestore.collection('users').doc(uId).set(
               user.toMap(),
             );
-        AppConstant.showLoader(
-          context,
-          "Saving User Data",
-        );
         Future.delayed(
           const Duration(seconds: 2),
           () {

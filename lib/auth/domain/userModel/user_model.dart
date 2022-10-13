@@ -6,7 +6,7 @@ class UserModel {
   final String profilePic;
   final bool isOnline;
   final String phoneNumber;
-  final List<String> groupIds;
+  // final List<String> groupIds;
 
   UserModel({
     required this.name,
@@ -14,7 +14,7 @@ class UserModel {
     required this.profilePic,
     required this.isOnline,
     required this.phoneNumber,
-    required this.groupIds,
+    // required this.groupIds,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,7 +24,7 @@ class UserModel {
       'profilePic': profilePic,
       'isOnline': isOnline,
       'phoneNumber': phoneNumber,
-      'groupIds': groupIds,
+      // 'groupIds': groupIds,
     };
   }
 
@@ -35,9 +35,9 @@ class UserModel {
       profilePic: map['profilePic'] as String,
       isOnline: map['isOnline'] as bool,
       phoneNumber: map['phoneNumber'] as String,
-      groupIds: List<String>.from(
-        (map['groupIds'] as List<String>),
-      ),
+      // groupIds: List<String>.from(
+      //   (map['groupIds'] as List<String>),
+      // ),
     );
   }
 }
