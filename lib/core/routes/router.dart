@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:messenger_chat/auth/presentation/login_page.dart';
 import 'package:messenger_chat/auth/presentation/otp_page.dart';
 import 'package:messenger_chat/getContacts/presentation/select_contact_page.dart';
-import 'package:messenger_chat/home/presentation/chat_page.dart';
+import 'package:messenger_chat/chat/presentation/chat_page.dart';
 import 'package:messenger_chat/home/presentation/home_page.dart';
 import 'package:messenger_chat/landing/landing_page.dart';
 import 'package:messenger_chat/splash_page.dart';

@@ -23,6 +23,13 @@ final authNotifierProvider = Provider<AuthNotifier>(
   },
 );
 
+final userDataProvider = FutureProvider(
+  (ref) {
+    final authController = ref.watch(authNotifierProvider);
+    return authController.getUserData();
+  },
+);
+
 final logInNotifierProvider = StateNotifierProvider<LoginNotifier, AuthState>(
   (ref) {
     return LoginNotifier(

@@ -24,7 +24,10 @@ class ContactListWidget extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 AutoRouter.of(context).push(
-                  const ChatRoute(),
+                  ChatRoute(
+                    userName: "Ashu",
+                    userId: "122345",
+                  ),
                 );
               },
               child: ListTile(
