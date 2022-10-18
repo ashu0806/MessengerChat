@@ -52,7 +52,10 @@ class GetContactServices extends AbGetContactServices {
         if (selectedPhoneNumber == userData.phoneNumber) {
           isFound = true;
           AutoRouter.of(context).push(
-            const ChatRoute(),
+            ChatRoute(
+              userName: userData.name,
+              userId: userData.uId,
+            ),
           );
         }
       }

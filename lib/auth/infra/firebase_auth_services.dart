@@ -144,6 +144,33 @@ class FirebaseAuthServices extends AbFirebaseAuthServices {
 
   @override
   Future<bool> getSignedInUser() async => auth.currentUser?.uid != null;
+
+  @override
+  Future<UserModel?> getCurrentUserData() async {
+    var userData = await firebaseFirestore
+        .collection('users')
+        .doc(auth.currentUser?.uid)
+        .get();
+
+    UserModel? user;
+    if (userData.data() != null) {
+      user = UserModel.fromMap(
+        userData.data()!,
+      );
+    }
+    return user;
+  }
+
+  @override
+  Stream<UserModel> fetchUserData(
+    String userId,
+  ) {
+    return firebaseFirestore.collection('users').doc(userId).snapshots().map(
+          (event) => UserModel.fromMap(
+            event.data()!,
+          ),
+        );
+  }
 }
 
 

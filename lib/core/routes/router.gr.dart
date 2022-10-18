@@ -18,7 +18,7 @@ import '../../auth/presentation/login_page.dart' as _i3;
 import '../../auth/presentation/otp_page.dart' as _i4;
 import '../../auth/presentation/user_info_page.dart' as _i5;
 import '../../getContacts/presentation/select_contact_page.dart' as _i8;
-import '../../home/presentation/chat_page.dart' as _i7;
+import '../../chat/presentation/chat_page.dart' as _i7;
 import '../../home/presentation/home_page.dart' as _i6;
 import '../../landing/landing_page.dart' as _i2;
 import '../../splash_page.dart' as _i1;
@@ -87,9 +87,14 @@ class AppRouter extends _i9.RootStackRouter {
       );
     },
     ChatRoute.name: (routeData) {
+      final args = routeData.argsAs<ChatRouteArgs>();
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i7.ChatPage(),
+        child: _i7.ChatPage(
+          key: args.key,
+          userName: args.userName,
+          userId: args.userId,
+        ),
         transitionsBuilder: _i9.TransitionsBuilders.slideRightWithFade,
         opaque: true,
         barrierDismissible: false,
@@ -238,14 +243,41 @@ class HomeRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.ChatPage]
-class ChatRoute extends _i9.PageRouteInfo<void> {
-  const ChatRoute()
-      : super(
+class ChatRoute extends _i9.PageRouteInfo<ChatRouteArgs> {
+  ChatRoute({
+    _i10.Key? key,
+    required String userName,
+    required String userId,
+  }) : super(
           ChatRoute.name,
           path: '/chat-page',
+          args: ChatRouteArgs(
+            key: key,
+            userName: userName,
+            userId: userId,
+          ),
         );
 
   static const String name = 'ChatRoute';
+}
+
+class ChatRouteArgs {
+  const ChatRouteArgs({
+    this.key,
+    required this.userName,
+    required this.userId,
+  });
+
+  final _i10.Key? key;
+
+  final String userName;
+
+  final String userId;
+
+  @override
+  String toString() {
+    return 'ChatRouteArgs{key: $key, userName: $userName, userId: $userId}';
+  }
 }
 
 /// generated route for

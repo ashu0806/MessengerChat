@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:messenger_chat/auth/domain/userModel/user_model.dart';
 import 'package:messenger_chat/auth/infra/firebase_auth_services.dart';
 
 class AuthNotifier {
@@ -45,6 +46,19 @@ class AuthNotifier {
       name,
       profilePic,
       ref,
+    );
+  }
+
+  Future<UserModel?> getUserData() async {
+    UserModel? user = await services.getCurrentUserData();
+    return user;
+  }
+
+  Stream<UserModel> fetchData(
+    String userId,
+  ) {
+    return services.fetchUserData(
+      userId,
     );
   }
 }
