@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:messenger_chat/core/infra/common_firebase_storage.dart';
+import 'package:messenger_chat/core/infra/message_reply.dart';
 
 final firebseAuthProvider = Provider<FirebaseAuth>(
   (ref) {
@@ -26,5 +27,11 @@ final commonFirebaseStorageProvider = Provider<CommonFirebaseStorage>(
     return CommonFirebaseStorage(
       ref.watch(firebaseStorageProvider),
     );
+  },
+);
+
+final messageReplyProvider = StateProvider<MessageReply?>(
+  (ref) {
+    return null;
   },
 );

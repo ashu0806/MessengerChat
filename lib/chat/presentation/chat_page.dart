@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,7 +7,7 @@ import 'package:messenger_chat/auth/domain/userModel/user_model.dart';
 import 'package:messenger_chat/auth/shared/providers.dart';
 import 'package:messenger_chat/chat/widgets/interactive_message_bottom_field.dart';
 import 'package:messenger_chat/core/utils/app_constant.dart';
-import 'package:messenger_chat/home/widgets/chat_list_widget.dart';
+import 'package:messenger_chat/chat/widgets/chat_list_widget.dart';
 
 class ChatPage extends StatefulHookConsumerWidget {
   const ChatPage({
@@ -77,13 +78,13 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.video_call_rounded,
+                CupertinoIcons.videocam_fill,
               ),
             ),
             IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.call,
+                CupertinoIcons.phone_circle_fill,
               ),
             ),
             IconButton(
@@ -101,8 +102,10 @@ class _ChatPageState extends ConsumerState<ChatPage> {
           },
           child: Column(
             children: [
-              const Expanded(
-                child: ChatListWidget(),
+              Expanded(
+                child: ChatListWidget(
+                  receiverUserId: widget.userId,
+                ),
               ),
               InteractiveMessageBottomField(
                 receiverUserId: widget.userId,
