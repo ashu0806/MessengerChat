@@ -171,6 +171,17 @@ class FirebaseAuthServices extends AbFirebaseAuthServices {
           ),
         );
   }
+
+  void setUserState(bool isOnline) async {
+    await firebaseFirestore
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .update(
+      {
+        "isOnline": isOnline,
+      },
+    );
+  }
 }
 
 

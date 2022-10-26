@@ -1,11 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:messenger_chat/auth/shared/providers.dart';
 import 'package:messenger_chat/core/routes/router.gr.dart';
 import 'package:messenger_chat/core/utils/app_constant.dart';
-import 'package:messenger_chat/home/widgets/contact_list_widget.dart';
+import 'package:messenger_chat/chat/widgets/contact_list_widget.dart';
+import 'package:messenger_chat/status/presentation/status_page.dart';
 
 class HomePage extends StatefulHookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,7 +24,10 @@ class _HomePageState extends ConsumerState<HomePage>
   @override
   void initState() {
     super.initState();
-    tabBarController = TabController(length: 3, vsync: this);
+    tabBarController = TabController(
+      length: 3,
+      vsync: this,
+    );
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -30,20 +37,20 @@ class _HomePageState extends ConsumerState<HomePage>
     WidgetsBinding.instance.removeObserver(this);
   }
 
-  // @override
-  // void didChangeAppLifecycleState(AppLifecycleState state) {
-  //   super.didChangeAppLifecycleState(state);
-  //   switch (state) {
-  //     case AppLifecycleState.resumed:
-  //       ref.read(authControllerProvider).setUserState(true);
-  //       break;
-  //     case AppLifecycleState.inactive:
-  //     case AppLifecycleState.detached:
-  //     case AppLifecycleState.paused:
-  //       ref.read(authControllerProvider).setUserState(false);
-  //       break;
-  //   }
-  // }
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    switch (state) {
+      case AppLifecycleState.resumed:
+        ref.read(authNotifierProvider).setUserState(true);
+        break;
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.detached:
+      case AppLifecycleState.paused:
+        ref.read(authNotifierProvider).setUserState(false);
+        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,9 +128,7 @@ class _HomePageState extends ConsumerState<HomePage>
               controller: tabBarController,
               children: const [
                 ContactListWidget(),
-                Center(
-                  child: Text('Status'),
-                ),
+                StatusPage(),
                 Center(
                   child: Text('Calls'),
                 ),
@@ -135,15 +140,15 @@ class _HomePageState extends ConsumerState<HomePage>
                   AutoRouter.of(context).push(
                     const SelectContactRoute(),
                   );
-                } else {  
+                } else {
                   File? pickedImage =
                       await AppConstant.pickImageFromGallery(context);
                   if (pickedImage != null) {
-                    // Navigator.pushNamed(
-                    //   context,
-                    //   ConfirmStatusScreen.routeName,
-                    //   arguments: pickedImage,
-                    // );
+                    AutoRouter.of(context).push(
+                      ConfirmedStatusRoute(
+                        pickedFile: pickedImage,
+                      ),
+                    );
                   }
                 }
               },

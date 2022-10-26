@@ -61,6 +61,12 @@ class AuthNotifier {
       userId,
     );
   }
+
+  void setUserState(bool isOnline) {
+    services.setUserState(
+      isOnline,
+    );
+  }
 }
 
 // class AuthNotifier extends StateNotifier<AuthState> {

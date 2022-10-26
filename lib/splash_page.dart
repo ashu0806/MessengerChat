@@ -15,10 +15,21 @@ final initialProvider = Provider<Unit>(
   },
 );
 
-class SplashPage extends HookConsumerWidget {
+class SplashPage extends StatefulHookConsumerWidget {
   const SplashPage({Key? key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SplashPage> createState() => _SplashPageState();
+}
+
+class _SplashPageState extends ConsumerState<SplashPage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     ref.listen(
       initialProvider,
       (previous, next) {},

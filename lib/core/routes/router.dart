@@ -7,6 +7,7 @@ import 'package:messenger_chat/home/presentation/home_page.dart';
 import 'package:messenger_chat/landing/landing_page.dart';
 import 'package:messenger_chat/splash_page.dart';
 import 'package:messenger_chat/auth/presentation/user_info_page.dart';
+import 'package:messenger_chat/status/presentation/confirmed_status_page.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -41,6 +42,9 @@ import 'package:messenger_chat/auth/presentation/user_info_page.dart';
     ),
     CustomRoute(
       page: SelectContactPage,
+    ),
+    CustomRoute(
+      page: ConfirmedStatusPage,
     ),
   ],
 )

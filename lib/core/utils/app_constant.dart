@@ -16,7 +16,6 @@ mixin AppConstant {
   static showLoader(context, String message, {Color? color}) {
     return showDialog(
       context: context,
-      
       builder: (context) {
         return Center(
           child: Container(
@@ -92,4 +91,41 @@ mixin AppConstant {
     }
     return image;
   }
+
+  static Future<File?> pickVideoFromGallery(BuildContext context) async {
+    File? video;
+
+    try {
+      final pickedVideo = await ImagePicker().pickVideo(
+        source: ImageSource.gallery,
+      );
+      if (pickedVideo != null) {
+        video = File(pickedVideo.path);
+      }
+    } catch (e) {
+      AppConstant.showSnackbar(
+        context,
+        e.toString(),
+        Colors.black,
+      );
+    }
+    return video;
+  }
+
+  // static Future<GiphyGif?> pickGIF(BuildContext context) async {
+  //   GiphyGif? gif;
+  //   try {
+  //     gif = await Giphy.getGif(
+  //       context: context,
+  //       apiKey: 'Fiobtfn9g64zu4NX2Rpvj5SMqwC989CK',
+  //     );
+  //   } catch (e) {
+  //     AppConstant.showSnackbar(
+  //       context,
+  //       e.toString(),
+  //       Colors.black,
+  //     );
+  //   }
+  //   return gif;
+  // }
 }

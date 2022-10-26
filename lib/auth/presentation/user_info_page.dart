@@ -16,6 +16,7 @@ class UserInfoPage extends StatefulHookConsumerWidget {
 
 class _UserInfoPageState extends ConsumerState<UserInfoPage> {
   var nameController = TextEditingController();
+  bool nameIsNotEmpty = false;
   File? image;
   @override
   void dispose() {
