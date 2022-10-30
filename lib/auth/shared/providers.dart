@@ -8,7 +8,7 @@ import 'package:messenger_chat/core/shared/providers.dart';
 final firebaseAuthServiceProvider = Provider<FirebaseAuthServices>(
   (ref) {
     return FirebaseAuthServices(
-      ref.watch(firebseAuthProvider),
+      ref.watch(firebaseAuthProvider),
       ref.watch(firebaseFirestoreProvider),
     );
   },

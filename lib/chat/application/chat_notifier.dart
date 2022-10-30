@@ -8,6 +8,7 @@ import 'package:messenger_chat/chat/domain/messageModel/message_model.dart';
 import 'package:messenger_chat/chat/infra/chat_services.dart';
 import 'package:messenger_chat/core/shared/message_enum.dart';
 import 'package:messenger_chat/core/shared/providers.dart';
+import 'package:messenger_chat/group/domain/groupModel/group_model.dart';
 
 class ChatNotifier {
   final ChatServices service;
@@ -22,6 +23,10 @@ class ChatNotifier {
     return service.getContactsList();
   }
 
+  Stream<List<GroupModel>> chatGroups() {
+    return service.getChatGroups();
+  }
+
   Stream<List<MessageModel>> getChatStream(
     String receiverUserId,
   ) {
@@ -30,10 +35,19 @@ class ChatNotifier {
     );
   }
 
+  Stream<List<MessageModel>> getGroupChatStream(
+    String groupId,
+  ) {
+    return service.getGroupMessageStream(
+      groupId,
+    );
+  }
+
   void sendTextMessage(
     BuildContext context,
     String text,
     String receiverUserId,
+    bool isGroupChat,
   ) {
     final messageReply = ref.read(messageReplyProvider);
     ref.read(userDataProvider).whenData(
@@ -43,6 +57,7 @@ class ChatNotifier {
             receiverUserId,
             value!,
             messageReply,
+            isGroupChat,
           ),
         );
     ref.read(messageReplyProvider.state).update(
@@ -55,6 +70,7 @@ class ChatNotifier {
     File file,
     String receiverUserId,
     MessageEnum messageEnum,
+    bool isGroupChat,
   ) {
     final messageReply = ref.read(messageReplyProvider);
     ref.read(userDataProvider).whenData(
@@ -66,6 +82,7 @@ class ChatNotifier {
             ref,
             messageEnum,
             messageReply,
+            isGroupChat,
           ),
         );
     ref.read(messageReplyProvider.state).update(
@@ -77,6 +94,7 @@ class ChatNotifier {
     BuildContext context,
     String gifUrl,
     String receiverUserId,
+    bool isGroupChat,
   ) {
     final messageReply = ref.read(messageReplyProvider);
     ref.read(userDataProvider).whenData(
@@ -86,6 +104,7 @@ class ChatNotifier {
             receiverUserId,
             value!,
             messageReply,
+            isGroupChat,
           ),
         );
     ref.read(messageReplyProvider.state).update(

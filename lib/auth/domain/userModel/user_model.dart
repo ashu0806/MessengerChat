@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class UserModel {
@@ -6,7 +8,7 @@ class UserModel {
   final String profilePic;
   final bool isOnline;
   final String phoneNumber;
-  // final List<String> groupIds;
+  final List<String>? groupIds;
 
   UserModel({
     required this.name,
@@ -14,7 +16,7 @@ class UserModel {
     required this.profilePic,
     required this.isOnline,
     required this.phoneNumber,
-    // required this.groupIds,
+    required this.groupIds,
   });
 
   Map<String, dynamic> toMap() {
@@ -24,7 +26,7 @@ class UserModel {
       'profilePic': profilePic,
       'isOnline': isOnline,
       'phoneNumber': phoneNumber,
-      // 'groupIds': groupIds,
+      'groupIds': groupIds,
     };
   }
 
@@ -35,9 +37,13 @@ class UserModel {
       profilePic: map['profilePic'] as String,
       isOnline: map['isOnline'] as bool,
       phoneNumber: map['phoneNumber'] as String,
-      // groupIds: List<String>.from(
-      //   (map['groupIds'] as List<String>),
-      // ),
+      groupIds:
+          map['groupIds'] != null ? List<String>.from(map['groupIds']) : null,
     );
   }
+
+  String toJson() => json.encode(toMap());
+
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

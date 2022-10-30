@@ -117,7 +117,7 @@ class FirebaseAuthServices extends AbFirebaseAuthServices {
           profilePic: photoUrl,
           isOnline: true,
           phoneNumber: auth.currentUser!.phoneNumber.toString(),
-          // groupIds: [],
+          groupIds: [],
         );
 
         await firebaseFirestore.collection('users').doc(uId).set(

@@ -7,7 +7,7 @@ final chatServiceProvider = Provider<ChatServices>(
   (ref) {
     return ChatServices(
       ref.watch(firebaseFirestoreProvider),
-      ref.watch(firebseAuthProvider),
+      ref.watch(firebaseAuthProvider),
     );
   },
 );

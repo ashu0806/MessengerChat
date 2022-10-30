@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:messenger_chat/chat/widgets/display_chat_message.dart';
 import 'package:messenger_chat/core/shared/message_enum.dart';
-import 'package:messenger_chat/core/utils/app_constant.dart';
 import 'package:swipe_to/swipe_to.dart';
 
 class SenderMessageCard extends StatelessWidget {
@@ -45,7 +44,7 @@ class SenderMessageCard extends StatelessWidget {
                 8.r,
               ),
             ),
-            color: AppConstant.primaryColor,
+            color: const Color.fromARGB(255, 201, 178, 223),
             margin: EdgeInsets.symmetric(
               horizontal: 15.w,
               vertical: 5.h,
@@ -80,7 +79,7 @@ class SenderMessageCard extends StatelessWidget {
                                 Theme.of(context).textTheme.headline4!.copyWith(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 14.sp,
+                                      fontSize: 15.sp,
                                     ),
                           ),
                           SizedBox(
@@ -121,7 +120,7 @@ class SenderMessageCard extends StatelessWidget {
                       Text(
                         time,
                         style: Theme.of(context).textTheme.headline3!.copyWith(
-                              color: Colors.grey,
+                              color: Colors.black,
                               fontSize: 13.sp,
                             ),
                       ),

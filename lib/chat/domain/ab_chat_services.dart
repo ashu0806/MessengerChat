@@ -7,6 +7,7 @@ import 'package:messenger_chat/chat/domain/chatContactModel/chat_contact_model.d
 import 'package:messenger_chat/chat/domain/messageModel/message_model.dart';
 import 'package:messenger_chat/core/infra/message_reply.dart';
 import 'package:messenger_chat/core/shared/message_enum.dart';
+import 'package:messenger_chat/group/domain/groupModel/group_model.dart';
 
 abstract class AbChatServices {
   void sendTextMessage(
@@ -15,6 +16,7 @@ abstract class AbChatServices {
     String receiverUserId,
     UserModel senderUserData,
     MessageReply? messageReply,
+    bool isGroupChat,
   );
 
   void sendFileMessage(
@@ -25,6 +27,7 @@ abstract class AbChatServices {
     ProviderRef ref,
     MessageEnum messageEnum,
     MessageReply? messageReply,
+    bool isGroupChat,
   );
 
   void sendGIFMessage(
@@ -33,6 +36,7 @@ abstract class AbChatServices {
     String receiverUserId,
     UserModel senderUserData,
     MessageReply? messageReply,
+    bool isGroupChat,
   );
 
   void setChatMessageSeen(
@@ -42,7 +46,11 @@ abstract class AbChatServices {
   );
 
   Stream<List<ChatContactModel>> getContactsList();
+  Stream<List<GroupModel>> getChatGroups();
   Stream<List<MessageModel>> getMessageStream(
     String receiverUserId,
+  );
+  Stream<List<MessageModel>> getGroupMessageStream(
+    String groupId,
   );
 }

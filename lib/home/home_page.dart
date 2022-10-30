@@ -89,14 +89,15 @@ class _HomePageState extends ConsumerState<HomePage>
                     color: AppConstant.appwhite,
                   ),
                   itemBuilder: (context) => [
-                    const PopupMenuItem(
-                      child: Text(
+                    PopupMenuItem(
+                      child: const Text(
                         'Create Group',
                       ),
-                      // onTap: () => Future(
-                      //   () => Navigator.pushNamed(
-                      //       context, CreateGroupScreen.routeName),
-                      // ),
+                      onTap: () => Future(
+                        () => AutoRouter.of(context).push(
+                          const CreateGroupRoute(),
+                        ),
+                      ),
                     )
                   ],
                 ),
