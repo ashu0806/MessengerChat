@@ -23,7 +23,7 @@ class DisplayChatMessage extends StatelessWidget {
             message,
             style: Theme.of(context).textTheme.headline3!.copyWith(
                   color: Colors.black,
-                  fontSize: 13.sp,
+                  fontSize: 14.sp,
                 ),
           )
         : type == MessageEnum.video
@@ -34,7 +34,7 @@ class DisplayChatMessage extends StatelessWidget {
                 ? StatefulBuilder(builder: (context, setState) {
                     return IconButton(
                       constraints: BoxConstraints(
-                        minWidth: 150.w,
+                        minWidth: 100.w,
                       ),
                       onPressed: () async {
                         if (isPlaying) {

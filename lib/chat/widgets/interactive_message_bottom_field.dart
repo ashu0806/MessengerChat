@@ -18,8 +18,10 @@ class InteractiveMessageBottomField extends ConsumerStatefulWidget {
   const InteractiveMessageBottomField({
     Key? key,
     required this.receiverUserId,
+    required this.isGroupChat,
   }) : super(key: key);
   final String receiverUserId;
+  final bool isGroupChat;
 
   @override
   ConsumerState<InteractiveMessageBottomField> createState() =>
@@ -90,6 +92,7 @@ class _InteractiveMessageBottomFieldState
             context,
             messageController.text.trim(),
             widget.receiverUserId,
+            widget.isGroupChat,
           );
       setState(() {
         messageController.text = '';
@@ -127,6 +130,7 @@ class _InteractiveMessageBottomFieldState
           file,
           widget.receiverUserId,
           messageEnum,
+          widget.isGroupChat,
         );
   }
 
@@ -201,7 +205,7 @@ class _InteractiveMessageBottomFieldState
                         horizontal: 5.w,
                       ),
                       child: SizedBox(
-                        width: 40.h,
+                        width: 43.h,
                         child: Row(
                           children: [
                             IconButton(
@@ -211,6 +215,7 @@ class _InteractiveMessageBottomFieldState
                                 color: Colors.black,
                               ),
                             ),
+
                             // IconButton(
                             //   onPressed: () {},
                             //   icon: const Icon(
@@ -222,8 +227,9 @@ class _InteractiveMessageBottomFieldState
                         ),
                       ),
                     ),
-                    suffixIcon: SizedBox(
-                      width: 100.w,
+                    suffixIcon: Container(
+                      width: 90.w,
+                      alignment: Alignment.center,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [

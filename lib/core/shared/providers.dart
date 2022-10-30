@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:messenger_chat/core/infra/common_firebase_storage.dart';
 import 'package:messenger_chat/core/infra/message_reply.dart';
 
-final firebseAuthProvider = Provider<FirebaseAuth>(
+final firebaseAuthProvider = Provider<FirebaseAuth>(
   (ref) {
     return FirebaseAuth.instance;
   },

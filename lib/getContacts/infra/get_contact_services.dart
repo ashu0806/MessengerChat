@@ -53,9 +53,10 @@ class GetContactServices extends AbGetContactServices {
           isFound = true;
           AutoRouter.of(context).push(
             ChatRoute(
-              userName: userData.name,
-              userId: userData.uId,
-            ),
+                name: userData.name,
+                id: userData.uId,
+                isGroupChat: false,
+                profilePic: userData.profilePic),
           );
         }
       }
