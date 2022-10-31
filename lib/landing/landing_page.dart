@@ -16,56 +16,58 @@ class LandingPage extends StatelessWidget {
           padding: EdgeInsets.all(
             20.sm,
           ),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30.h,
-              ),
-              Center(
-                child: Text(
-                  "Welcome to Messenger Chat",
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30.h,
+                ),
+                Center(
+                  child: Text(
+                    "Welcome to Messenger Chat",
+                    style: Theme.of(context).textTheme.headline4!.copyWith(
+                          fontSize: 23.sp,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                ),
+                const Spacer(),
+                Image.asset(
+                  'assets/landingPage/bg.png',
+                  color: const Color.fromARGB(255, 1, 36, 2),
+                  fit: BoxFit.contain,
+                ),
+                const Spacer(),
+                Text(
+                  'Read our Privacy Policy. Tap "Agree and Continue" to accept the Terms and Conditions.',
+                  textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline4!.copyWith(
-                        fontSize: 23.sp,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontSize: 15.sp,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w400,
                       ),
                 ),
-              ),
-              const Spacer(),
-              Image.asset(
-                'assets/landingPage/bg.png',
-                color: const Color.fromARGB(255, 1, 36, 2),
-                fit: BoxFit.contain,
-              ),
-              const Spacer(),
-              Text(
-                'Read our Privacy Policy. Tap "Agree and Continue" to accept the Terms and Conditions.',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline4!.copyWith(
-                      fontSize: 15.sp,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w400,
-                    ),
-              ),
-              SizedBox(
-                height: 20.h,
-              ),
-              SizedBox(
-                width: 230.w,
-                child: CustomButtonWidget(
-                  text: "Agree and Continue",
-                  onTap: () {
-                    AutoRouter.of(context).push(
-                      const LogInRoute(),
-                    );
-                  },
-                  backgroundColor: AppConstant.secondaryColor,
+                SizedBox(
+                  height: 20.h,
                 ),
-              ),
-              SizedBox(
-                height: 40.h,
-              ),
-            ],
+                SizedBox(
+                  width: 230.w,
+                  child: CustomButtonWidget(
+                    text: "Agree and Continue",
+                    onTap: () {
+                      AutoRouter.of(context).push(
+                        const LogInRoute(),
+                      );
+                    },
+                    backgroundColor: AppConstant.secondaryColor,
+                  ),
+                ),
+                SizedBox(
+                  height: 40.h,
+                ),
+              ],
+            ),
           ),
         ),
       ),
